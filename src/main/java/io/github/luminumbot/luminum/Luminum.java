@@ -49,7 +49,7 @@ public class Luminum {
             }
         });
     }
-
+    String string = "";
     private static long convertIDtoUnix(long id) {
         /* Note: id has to be str */
         var bin = Long.toBinaryString(id);
