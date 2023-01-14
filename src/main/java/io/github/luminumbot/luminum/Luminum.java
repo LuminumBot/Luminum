@@ -51,7 +51,6 @@ public class Luminum {
     }
 
     private static long convertIDtoUnix(long id) {
-        /* Note: id has to be str */
         var bin = Long.toBinaryString(id);
         var m = 64 - bin.length();
         var unixbin = bin.substring(0, 42 - m);
