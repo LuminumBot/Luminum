@@ -10,6 +10,18 @@
     <packaging>jar</packaging>
 
     <name>Luminum</name>
+    <developers>
+        <developer>
+            <name>Vladislav Savitskiy (HIlight3R)</name>
+            <email>hilight3r7@gmail.com</email>
+            <timezone>3</timezone>
+        </developer>
+        <developer>
+            <name>Roman Aksenov (AxoRom)</name>
+            <email>raksenov50@gmail.com</email>
+            <timezone>3</timezone>
+        </developer>
+    </developers>
 
     <properties>
         <mainClass>io.github.luminumbot.luminum.Luminum</mainClass>
