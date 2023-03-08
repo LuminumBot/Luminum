@@ -34,9 +34,6 @@ public class Luminum {
         SlashCommand.with("regdate", "Get user registration date")
                 .createGlobal(api)
                 .join();
-        SlashCommand.with("aboba", "Get user date")
-                .createGlobal(api)
-                .join();
         api.addSlashCommandCreateListener(event -> {
             SlashCommandInteraction interaction = event.getSlashCommandInteraction();
 
