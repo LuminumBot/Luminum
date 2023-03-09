@@ -4,7 +4,10 @@ import org.javacord.api.event.interaction.SlashCommandCreateEvent;
 import org.javacord.api.interaction.SlashCommand;
 import org.javacord.api.interaction.SlashCommandBuilder;
 import org.javacord.api.interaction.SlashCommandInteraction;
+import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.listener.interaction.SlashCommandCreateListener;
+
+import java.util.List;
 
 import static io.github.luminumbot.luminum.Luminum.getApi;
 
@@ -14,6 +17,12 @@ public abstract class AbstractSlashCommand implements SlashCommandCreateListener
 
     public AbstractSlashCommand(String name, String description) {
         SlashCommandBuilder commandBuilder = SlashCommand.with(name, description);
+        commandBuilder.createGlobal(getApi()).join();
+        this.name = name;
+        this.description = description;
+    }
+    public AbstractSlashCommand(String name, String description, List<SlashCommandOption> arguments) {
+        SlashCommandBuilder commandBuilder = SlashCommand.with(name, description, arguments);
         commandBuilder.createGlobal(getApi()).join();
         this.name = name;
         this.description = description;
