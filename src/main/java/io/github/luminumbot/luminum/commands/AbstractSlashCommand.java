@@ -32,7 +32,7 @@ public abstract class AbstractSlashCommand implements SlashCommandCreateListener
     @Override
     public void onSlashCommandCreate(SlashCommandCreateEvent event) {
         SlashCommandInteraction interaction = event.getSlashCommandInteraction();
-        if (interaction.getFullCommandName().equals(name)) {
+        if (interaction.getCommandName().equals(name)) {
             slashCommandHandler(interaction, name, description, event);
         }
     }
