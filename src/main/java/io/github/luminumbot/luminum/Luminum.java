@@ -1,10 +1,9 @@
 package io.github.luminumbot.luminum;
 
+import io.github.luminumbot.luminum.commands.PingCommand;
 import io.github.luminumbot.luminum.commands.RegdateCommand;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
-import org.javacord.api.interaction.SlashCommand;
-import org.javacord.api.interaction.SlashCommandInteraction;
 
 public class Luminum {
 
@@ -18,21 +17,7 @@ public class Luminum {
     }
 
     public static void main(String[] args) {
-        SlashCommand.with("ping", "Check bot latency")
-                .createGlobal(api)
-                .join();
-
-
-        api.addSlashCommandCreateListener(event -> {
-            SlashCommandInteraction interaction = event.getSlashCommandInteraction();
-
-            if (interaction.getFullCommandName().equals("ping")) {
-                interaction
-                        .createImmediateResponder()
-                        .setContent("Pong")
-                        .respond();
-            }
-        });
+        api.addSlashCommandCreateListener(new PingCommand());
         api.addSlashCommandCreateListener(new RegdateCommand());
     }
 }
