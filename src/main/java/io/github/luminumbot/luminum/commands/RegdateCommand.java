@@ -6,7 +6,7 @@ import org.javacord.api.interaction.SlashCommandInteraction;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static io.github.luminumbot.luminum.utils.Date.convertIDtoUnix;
+import static io.github.luminumbot.luminum.utils.DateUtils.discordIdToUnixTime;
 
 public class RegdateCommand extends AbstractSlashCommand {
     public RegdateCommand() {
@@ -18,7 +18,7 @@ public class RegdateCommand extends AbstractSlashCommand {
         interaction
                 .createImmediateResponder()
                 .setContent("Your registration date: " + new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(new Date(
-                                convertIDtoUnix(interaction.getUser().getId())
+                                discordIdToUnixTime(interaction.getUser().getId())
                         ))
                 )
                 .respond();
