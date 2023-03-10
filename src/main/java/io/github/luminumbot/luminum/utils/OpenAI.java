@@ -3,8 +3,10 @@ package io.github.luminumbot.luminum.utils;
 import com.theokanning.openai.completion.CompletionRequest;
 import com.theokanning.openai.service.OpenAiService;
 
+import static io.github.luminumbot.luminum.Config.*;
+
 public class OpenAI {
-    private static final OpenAiService service = new OpenAiService("OPENAI_TOKEN");
+    private static final OpenAiService service = new OpenAiService(OPENAI_TOKEN);
 
     public String answerGPT(Long id, String question) {
         if (question.length() < 5) {
@@ -12,10 +14,10 @@ public class OpenAI {
         }
         CompletionRequest request = CompletionRequest.builder()
                 .prompt(question)
-                .model("text-davinci-003")
+                .model(OPENAI_MODEL)
                 .echo(true)
-                .temperature(0.4)
-                .maxTokens(4000)
+                .temperature(OPENAI_TEMPERATURE)
+                .maxTokens(OPENAI_MAX_TOKENS)
                 .build();
         return service.createCompletion(request).getChoices().get(0).getText();
     }

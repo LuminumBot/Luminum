@@ -6,10 +6,12 @@ import io.github.luminumbot.luminum.commands.RegdateCommand;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 
+import static io.github.luminumbot.luminum.Config.DISCORD_TOKEN;
+
 public class Luminum {
 
     private static final DiscordApi api = new DiscordApiBuilder()
-            .setToken(System.getenv("LUMINUM_TOKEN"))
+            .setToken(DISCORD_TOKEN)
             .login()
             .join();
 
