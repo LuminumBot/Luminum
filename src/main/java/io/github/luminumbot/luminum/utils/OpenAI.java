@@ -8,7 +8,7 @@ import static io.github.luminumbot.luminum.Config.*;
 public class OpenAI {
     private static final OpenAiService service = new OpenAiService(OPENAI_TOKEN);
 
-    public String answerGPT(Long id, String question) {
+    public static String answerGPT(Long id, String question) {
         if (question.length() < 5) {
             return "Your message too short";
         }
