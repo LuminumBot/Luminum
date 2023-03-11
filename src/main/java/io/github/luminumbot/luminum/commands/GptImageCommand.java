@@ -8,11 +8,11 @@ import org.javacord.api.interaction.SlashCommandOptionType;
 import java.util.Collections;
 import java.util.List;
 
-import static io.github.luminumbot.luminum.utils.OpenAI.answerGPT;
+import static io.github.luminumbot.luminum.utils.OpenAI.imageAnswerGPT;
 
-public class GptCommand extends AbstractSlashCommand {
-    public GptCommand() {
-        super("chatgpt", "Получить ответ от нееросети", getOptions());
+public class GptImageCommand extends AbstractSlashCommand {
+    public GptImageCommand() {
+        super("imagegpt", "Получить ответ от нееросети", getOptions());
     }
 
     private static List<SlashCommandOption> getOptions() {
@@ -26,8 +26,8 @@ public class GptCommand extends AbstractSlashCommand {
         interaction
                 .respondLater()
                 .thenAccept(interactionOriginalResponseUpdater ->
-                        interactionOriginalResponseUpdater.setContent(answerGPT(interaction.getUser().getId(),
-                                interaction.getArguments().get(0).getStringValue().get()))
+                        interactionOriginalResponseUpdater.setContent(imageAnswerGPT(interaction.getUser().getId(),
+                                        interaction.getArguments().get(0).getStringValue().get()))
                                 .update());
     }
 }

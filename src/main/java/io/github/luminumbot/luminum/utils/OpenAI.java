@@ -1,14 +1,15 @@
 package io.github.luminumbot.luminum.utils;
 
 import com.theokanning.openai.completion.CompletionRequest;
+import com.theokanning.openai.image.CreateImageRequest;
 import com.theokanning.openai.service.OpenAiService;
 
 import static io.github.luminumbot.luminum.Config.*;
 
-public class OpenAI {
+public final class OpenAI {
     private static final OpenAiService service = new OpenAiService(OPENAI_TOKEN);
 
-    public static String answerGPT(Long id, String question) {
+    public static String textAnswerGPT(Long id, String question) {
         if (question.length() < 5) {
             return "Your message too short";
         }
@@ -20,6 +21,18 @@ public class OpenAI {
                 .maxTokens(OPENAI_MAX_TOKENS)
                 .build();
         return service.createCompletion(request).getChoices().get(0).getText();
+    }
+
+    public static String imageAnswerGPT(Long id, String question) {
+        if (question.length() < 5) {
+            return "Your message too short";
+        }
+        CreateImageRequest imageRequest = CreateImageRequest.builder()
+                .prompt(question)
+                .responseFormat("url")
+                .n(1)
+                .build();
+        return service.createImage(imageRequest).getData().get(0).getUrl();
     }
 
 }
