@@ -1,9 +1,6 @@
 package io.github.luminumbot.luminum;
 
-import io.github.luminumbot.luminum.commands.GptImageCommand;
-import io.github.luminumbot.luminum.commands.GptTextCommand;
-import io.github.luminumbot.luminum.commands.PingCommand;
-import io.github.luminumbot.luminum.commands.RegdateCommand;
+import io.github.luminumbot.luminum.commands.*;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 
@@ -25,5 +22,6 @@ public class Luminum {
         api.addSlashCommandCreateListener(new GptTextCommand());
         api.addSlashCommandCreateListener(new RegdateCommand());
         api.addSlashCommandCreateListener(new GptImageCommand());
+        api.addSlashCommandCreateListener(new WeatherCommand());
     }
 }
