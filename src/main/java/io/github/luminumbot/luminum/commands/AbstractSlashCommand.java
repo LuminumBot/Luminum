@@ -21,6 +21,7 @@ public abstract class AbstractSlashCommand implements SlashCommandCreateListener
         this.name = name;
         this.description = description;
     }
+
     public AbstractSlashCommand(String name, String description, List<SlashCommandOption> arguments) {
         SlashCommandBuilder commandBuilder = SlashCommand.with(name, description, arguments);
         commandBuilder.createGlobal(getApi()).join();
@@ -29,6 +30,7 @@ public abstract class AbstractSlashCommand implements SlashCommandCreateListener
     }
 
     public abstract void slashCommandHandler(SlashCommandInteraction interaction, String name, String description, SlashCommandCreateEvent event);
+
     @Override
     public void onSlashCommandCreate(SlashCommandCreateEvent event) {
         SlashCommandInteraction interaction = event.getSlashCommandInteraction();

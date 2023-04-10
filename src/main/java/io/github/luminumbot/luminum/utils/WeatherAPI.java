@@ -29,7 +29,8 @@ public class WeatherAPI {
             JSONObject current = json.getJSONObject("current");
             String condition = current.getJSONObject("condition").getString("text");
             String iconUrl = "https:" + current.getJSONObject("condition").getString("icon");
-            return Arrays.asList("The weather in " + city + " is " + condition + ".", "Here's the icon for the current weather: " + iconUrl);
+            double temperature = current.getDouble("temp_c");
+            return Arrays.asList("The weather in " + city + " is " + condition + ".", "Temperature in city: " + temperature + "°C", iconUrl);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return Collections.singletonList(e.getMessage());
