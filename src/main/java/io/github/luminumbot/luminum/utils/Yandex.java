@@ -11,15 +11,14 @@ import java.util.Arrays;
 public class Yandex {
 
     private static final String API_KEY = Config.YANDEX_TOKEN;
-    private static final String TARGET_LANGUAGE = "ru";
     private static final String TRANSLATE_URL = "https://translate.api.cloud.yandex.net/translate/v2/translate";
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
     @SneakyThrows
-    public static String getTranslate(String text) {
+    public static String getTranslate(String text, String traget_language) {
         MediaType mediaType = MediaType.parse("application/json");
 
-        RequestBody body = RequestBody.create(mediaType, "{\"targetLanguageCode\":\"" + TARGET_LANGUAGE + "\",\"texts\":" + Arrays.toString(new String[]{text}).replace("[", "[\"").replace(", ", "\",\"").replace("]", "\"]") + "}");
+        RequestBody body = RequestBody.create(mediaType, "{\"targetLanguageCode\":\"" + traget_language + "\",\"texts\":" + Arrays.toString(new String[]{text}).replace("[", "[\"").replace(", ", "\",\"").replace("]", "\"]") + "}");
 
         Request request = new Request.Builder()
                 .url(TRANSLATE_URL)

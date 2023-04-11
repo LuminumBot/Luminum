@@ -26,11 +26,11 @@ public class WeatherCommand extends AbstractSlashCommand {
     @SneakyThrows
     @Override
     public void slashCommandHandler(SlashCommandInteraction interaction, String name, String description, SlashCommandCreateEvent event) {
-        List<String> weather = WeatherAPI.getWeather(interaction.getArguments().get(0).getStringValue().get());
+        List<String> weather = WeatherAPI.getWeather(Yandex.getTranslate(interaction.getArguments().get(0).getStringValue().get(), "en"));
         interaction.getChannel().get().sendMessage(new URL(weather.get(2)).openStream(), "weather.png");
         interaction
                 .createImmediateResponder()
-                .setContent(Yandex.getTranslate(weather.get(0) + "\n" + weather.get(1)))
+                .setContent(Yandex.getTranslate(weather.get(0) + "\n" + weather.get(1), "ru"))
                 .respond();
     }
 }
