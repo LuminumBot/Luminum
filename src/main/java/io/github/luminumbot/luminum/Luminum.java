@@ -23,5 +23,6 @@ public class Luminum {
         api.addSlashCommandCreateListener(new RegdateCommand());
         api.addSlashCommandCreateListener(new GptImageCommand());
         api.addSlashCommandCreateListener(new WeatherCommand());
+        api.addSlashCommandCreateListener(new TranslateCommand());
     }
 }
