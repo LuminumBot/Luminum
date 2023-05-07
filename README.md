@@ -2,37 +2,6 @@
 
 Наш Discord бот Luminum - это многофункциональный бот, который имеет возможность перевода текста, показа погоды по запросу города, показа даты регистрации пользователя, генерации картинок для пользователя по текстовому запросу с помощью нейросетей, а также ответа на сообщения пользователя. Этот бот может быть использован на любом сервере Discord и легко настраивается для использования с Docker контейнерами.
 
-## Установка и использование
-
-Чтобы установить и использовать бота, выполните следующие шаги:
-
-1. Клонируйте репозиторий на свой локальный компьютер:
-
-```
-git clone https://github.com/LuminumBot/Luminum
-```
-
-2. Установите все необходимые зависимости, выполнив команду:
-
-```
-npm install
-```
-
-3. Создайте файл .env в корневой папке проекта и добавьте следующие переменные:
-
-```
-DISCORD_TOKEN=your_discord_token
-OPENAI_TOKEN=your_weather_api_key
-WEATHER_TOKEN=your_discord_token
-YANDEX_TOKEN=your_weather_api_key
-```
-
-4. Запустите бота, выполнив команду:
-
-```
-npm start
-```
-
 ## Функции бота
 
 ### Перевод текста
@@ -67,31 +36,61 @@ npm start
 /imagegpt <текст>
 ```
 
-### Ответ на сообщения пользователя с помощью нейросети
+## Установка и использование
 
-Наш Discord бот может генерировать ответ от нейросети для пользователя на основе его текстового запроса. Чтобы использовать эту функцию, введите команду:
+### Обычная установка
 
-```
-/chatgpt <текст>
-```
+1. Клонируйте репозиторий на свой локальный компьютер:
 
-## Использование Docker контейнера
-
-Наш Discord бот также может быть использован в Docker контейнере. Для этого вам необходимо выполнить следующие шаги:
-
-1. Сбилдите образ Docker:
-
-```
-docker build -t yourproject:latest .
+```bash
+git clone https://github.com/LuminumBot/Luminum
 ```
 
-2. Запустите контейнер:
+2. Запишите токены и API ключи в следующие переменные среды:
 
-```
-docker run -d -e LUMINUM_TOKEN=your_discord_token -e OPENAI_TOKEN=your_weather_api_key -e WEATHER_TOKEN=your_discord_token -e YANDEX_TOKEN=your_weather_api_key luminum-bot
+```properties
+LUMINUM_TOKEN=<discord_token>
+OPENAI_TOKEN=<openai_api_key>
+WEATHER_TOKEN=<weatherapi_token>
+YANDEX_TOKEN=<yandex_token>
 ```
 
-Обратите внимание, что переменные окружения LUMINUM_TOKEN, OPENAI_TOKEN, WEATHER_TOKEN и YANDEX_TOKEN должны быть установлены в соответствии с вашими ключами API для Discord и погоды.
+3. Соберите проект следующей командой:
+
+```bash
+mvn package
+```
+
+4. Запустите бота, подставив вместо `<version>` версию проекта, например, `0.1.0-SNAPSHOT`:
+
+```bash
+java -jar ./target/Luminum-<version>.jar
+```
+
+### При помощи Docker
+
+1. Клонируйте репозиторий на свой локальный компьютер:
+
+```bash
+git clone https://github.com/LuminumBot/Luminum
+```
+
+2. Соберите Docker image следующей командой, подставив вместо `<version>` версию проекта, например, `0.1.0-SNAPSHOT`:
+
+```bash
+docker build --tag luminumbot --build-arg LUMINUM_VERSION=<version> .
+```
+
+3. Запустите Docker контейнер, подставив необходимые переменные среды:
+
+```bash
+docker run -it --rm \ 
+-e LUMINUM_TOKEN="<discord_token>" \ 
+-e OPENAI_TOKEN="<openai_api_key>" \ 
+-e WEATHER_TOKEN="<weatherapi_token>" \ 
+-e YANDEX_TOKEN="<yandex_token>" \ 
+luminumbot
+```
 
 ## Развитие проекта
 
