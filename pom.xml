@@ -21,6 +21,11 @@
             <email>raksenov50@gmail.com</email>
             <timezone>3</timezone>
         </developer>
+        <developer>
+            <name>Alexandr Styushin (Hakerman101)</name>
+            <email>goldencrafting@mail.ru</email>
+            <timezone>3</timezone>
+        </developer>
     </developers>
 
     <properties>
