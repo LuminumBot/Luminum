@@ -18,6 +18,7 @@ public class Luminum {
     }
 
     public static void main(String[] args) {
+        System.out.println("Luminum started!");
         api.addSlashCommandCreateListener(new PingCommand());
         api.addSlashCommandCreateListener(new GptTextCommand());
         api.addSlashCommandCreateListener(new RegdateCommand());
